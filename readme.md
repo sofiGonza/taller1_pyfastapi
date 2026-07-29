@@ -1,10 +1,10 @@
 
 # titulo y descripcion
-Nombre: Sofia Gonzalez Gallego
-Ficha: 3406204
-Competencias:
-*  **Elaboracion de la propuesta técnica para la solución de software
-* **Implantacion del software
+* Nombre: Sofia Gonzalez Gallego
+* Ficha: 3406204
+* Competencias:
+*  **Elaboracion de la propuesta técnica para la solución de software**
+* **Implantacion del software**
 
 
 ## sistema de registro de aprendices sena
