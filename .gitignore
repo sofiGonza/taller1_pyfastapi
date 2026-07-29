@@ -1,5 +1,5 @@
 structure.sh
-/data/aprendices.json
+/data/trainee.json
 /src/models/__pycache__/
 /src/templates/__pycache__/
 /src/views/__pycache__/
