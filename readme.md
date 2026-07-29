@@ -1,5 +1,10 @@
 
 # titulo y descripcion
+Nombre: Sofia Gonzalez Gallego
+Ficha: 3406204
+Competencias:
+*  **Elaboracion de la propuesta técnica para la solución de software
+* **Implantacion del software
 
 
 ## sistema de registro de aprendices sena
@@ -16,7 +21,7 @@ proyecto en Python para la gestion de aprendices SENA mediante interfaz por cons
 *   Programa
 
 # Estructura del proyecto
-taller1_pyfastapi/
+```taller1_pyfastapi/
 │
 ├── src/
 │   ├── main.py              # Punto de entrada de la aplicación
@@ -39,4 +44,4 @@ taller1_pyfastapi/
 │
 ├── .gitignore               # Archivos ignorados por Git
 ├── README.md                # Documentación del proyecto
-└── requirements.txt         # Dependencias (FastAPI, Uvicorn, Pydantic, etc.)
+└── requirements.txt         # Dependencias (FastAPI, Uvicorn, Pydantic, etc.)```
