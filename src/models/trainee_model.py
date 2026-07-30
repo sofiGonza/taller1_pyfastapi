@@ -60,3 +60,51 @@ def register_trainee(new_trainee):
     trainee.append(new_trainee)
     save_data()
     return True
+#Funcion para editar aprendiz
+def update_trainee(document, new_data):
+    """
+    Actualiza la información de un aprendiz.
+    """
+    for i, trainee_data in enumerate(trainee):
+        if trainee_data["documento"] == document:
+            trainee[i] = new_data
+            save_data()
+            return True
+    return False
+#funcion para eliminar aprendiz
+def delete_trainee(document):
+    """
+    Elimina un aprendiz por número de documento.
+    """
+    for trainee_data in trainee:
+        if trainee_data["documento"] == document:
+            trainee.remove(trainee_data)
+            save_data()
+            return True
+    return False
+
+#funcion para buscar aprendiz por nombre
+def search_by_name(name):
+    """
+    Busca aprendices por nombre.
+    """
+    results = []
+
+    for trainee_data in trainee:
+        if name.lower() in trainee_data["nombre"].lower():
+            results.append(trainee_data)
+
+    return results
+
+#funcion para buscar aprendiz por ficha
+def search_by_group(group_code):
+    """
+    Busca aprendices por número de ficha.
+    """
+    results = []
+
+    for trainee_data in trainee:
+        if trainee_data["ficha"] == group_code:
+            results.append(trainee_data)
+
+    return results
