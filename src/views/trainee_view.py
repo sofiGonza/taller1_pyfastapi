@@ -80,3 +80,13 @@ def search_trainee_view():
 
     else:
         print("\n❌ Opción inválida.")
+
+#funcion para exportar aprendices a CSV
+def export_csv_view():
+
+    try:
+        path = trainee_model.export_to_csv()
+        trainee_template.show_export_success(path)
+
+    except Exception:
+        trainee_template.show_export_error()

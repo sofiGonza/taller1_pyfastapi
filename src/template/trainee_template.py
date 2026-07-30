@@ -176,6 +176,13 @@ def show_search_results(results):
         print("Ficha:", trainee["ficha"])
         print("Programa:", trainee["programa"])
 
+# Funciones para exportar aprendices a CSV
+def show_export_success(path):
+    print(f"\n✅ Datos exportados correctamente.")
+    print(f"📄 Archivo generado: {path}")
+    
+def show_export_error():
+    print("\n❌ No fue posible exportar los datos.")
 
 def display_confirm_next():
     respuesta = input("\n¿Desea registrar otro aprendiz? (S/N): ").strip().upper()

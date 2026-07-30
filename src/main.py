@@ -8,12 +8,13 @@ def main():
     while True:
 
         print("\n===== MENU =====")
-        print("1. Registrar aprendiz")
-        print("2. Listar aprendices")
-        print("3. Editar aprendiz")
-        print("4. Eliminar aprendiz")
-        print("5. Buscar aprendiz")
-        print("6. Salir")
+        print("1. Registrar aprendiz ✏️")
+        print("2. Listar aprendices 📋")
+        print("3. Editar aprendiz 📝")
+        print("4. Eliminar aprendiz ❌")
+        print("5. Buscar aprendiz 🔍")
+        print("6. Exportar a CSV 📤")
+        print("7. Salir 🚪")
 
         opcion = input("Seleccione una opción: ")
 
@@ -33,6 +34,9 @@ def main():
             trainee_view.search_trainee_view()
 
         elif opcion == "6":
+            trainee_view.export_csv_view()
+
+        elif opcion == "7":
             print("Saliendo del programa ¡Hasta luego!")
             break
 

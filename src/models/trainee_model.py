@@ -1,5 +1,6 @@
 import json
 import os
+import csv
 # Base de datos en memoria (lista vacía al inicio)
 #Base de datos en archivo json
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
@@ -108,3 +109,39 @@ def search_by_group(group_code):
             results.append(trainee_data)
 
     return results
+
+def export_to_csv():
+    """
+    Exporta todos los aprendices a un archivo CSV.
+    """
+
+    os.makedirs(DATA_DIR, exist_ok=True)
+
+    csv_file = os.path.join(DATA_DIR, "trainee.csv")
+
+    with open(csv_file, "w", newline="", encoding="utf-8") as file:
+
+        writer = csv.writer(file)
+
+        # Encabezados
+        writer.writerow([
+            "Tipo_Documento",
+            "Documento",
+            "Nombre",
+            "Correo",
+            "Ficha",
+            "Programa"
+        ])
+
+        # Datos
+        for trainee_data in trainee:
+            writer.writerow([
+                trainee_data["tipo_doc"],
+                trainee_data["documento"],
+                trainee_data["nombre"],
+                trainee_data["correo"],
+                trainee_data["ficha"],
+                trainee_data["programa"]
+            ])
+
+    return csv_file
