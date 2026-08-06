@@ -1,49 +1,70 @@
+from fastapi import FastAPI, HTTPException
+from services.rick_morty_api import get_random_character
 from views import trainee_view
-from template import trainee_template
+
+app = FastAPI(
+    title="Rick and Morty Consumer API",
+    description="API simple con FastAPI para consumir la API de Rick & Morty",
+    version="1.0.0"
+)
+
+
+@app.get("/")
+def home():
+    """
+    Endpoint principal de la API.
+    """
+    return {
+        "message": "Bienvenido a la API de Rick & Morty con FastAPI. Visita /docs para ver la documentación interactiva."
+    }
+
+
+@app.get("/character/random")
+async def read_random_character():
+    """
+    Obtiene un personaje aleatorio.
+    """
+
+    character = await get_random_character()
+
+    if not character or "error" in character:
+        raise HTTPException(
+            status_code=500,
+            detail="No se pudo obtener el personaje de la API externa."
+        )
+
+    return character
+
+
+@app.get("/character/{character_id}")
+async def read_character_by_id(character_id: int):
+    """
+    Obtiene un personaje por su ID.
+    """
+
+    if character_id < 1 or character_id > 826:
+        raise HTTPException(
+            status_code=400,
+            detail="El ID del personaje debe estar entre 1 y 826."
+        )
+
+    character = await get_random_character(character_id=character_id)
+
+    if not character or "error" in character:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No se encontró el personaje con ID {character_id}."
+        )
+
+    return character
+
 
 def main():
-
-    trainee_view.init_app_data()
-
-    while True:
-
-        print("\n===== MENU =====")
-        print("1. Registrar aprendiz ✏️")
-        print("2. Listar aprendices 📋")
-        print("3. Editar aprendiz 📝")
-        print("4. Eliminar aprendiz ❌")
-        print("5. Buscar aprendiz 🔍")
-        print("6. Exportar a CSV 📤")
-        print("7. Salir 🚪")
-
-        opcion = input("Seleccione una opción: ")
-
-        if opcion == "1":
-            trainee_view.register_trainee_view()
-
-        elif opcion == "2":
-            trainee_view.status_view()
-
-        elif opcion == "3":
-            trainee_view.edit_trainee_view()
-
-        elif opcion == "4":
-            trainee_view.delete_trainee_view()
-
-        elif opcion == "5":
-            trainee_view.search_trainee_view()
-
-        elif opcion == "6":
-            trainee_view.export_csv_view()
-
-        elif opcion == "7":
-            print("Saliendo del programa ¡Hasta luego!")
-            break
-
-        else:
-            print("Opción inválida.")
+    """
+    Ejecuta el menú del CRUD de aprendices.
+    """
+    trainee_view.main_menu_controller()
 
 
 if __name__ == "__main__":
     main()
-    

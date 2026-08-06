@@ -1,7 +1,6 @@
 from models import trainee_model
 from template import trainee_template
 
-
 #funcion para inicializar los datos de la aplicacion
 def init_app_data():
     """Inicializa los datos de la aplicacion, creando la tabla de aprendices si no existe"""
@@ -90,3 +89,45 @@ def export_csv_view():
 
     except Exception:
         trainee_template.show_export_error()
+        
+def main_menu_controller():
+
+    init_app_data()
+
+    while True:
+
+        print("\n===== MENÚ PRINCIPAL =====")
+        print("1. Registrar aprendiz")
+        print("2. Listar aprendices")
+        print("3. Editar aprendiz")
+        print("4. Eliminar aprendiz")
+        print("5. Buscar aprendiz")
+        print("6. Exportar CSV")
+        print("7. Salir")
+
+        opcion = input("Seleccione una opción: ").strip()
+
+        if opcion == "1":
+            register_trainee_view()
+
+        elif opcion == "2":
+            status_view()
+
+        elif opcion == "3":
+            edit_trainee_view()
+
+        elif opcion == "4":
+            delete_trainee_view()
+
+        elif opcion == "5":
+            search_trainee_view()
+
+        elif opcion == "6":
+            export_csv_view()
+
+        elif opcion == "7":
+            print("\nHasta luego.")
+            break
+
+        else:
+            print("\n❌ Opción inválida.")
