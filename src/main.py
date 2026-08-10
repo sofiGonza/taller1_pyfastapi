@@ -2,6 +2,13 @@ from fastapi import FastAPI, HTTPException
 from services.rick_morty_api import get_random_character
 from views import trainee_view
 
+
+#importamos el modelo del aprendiz
+from models import trainee_model
+from schemas import trainee_schema
+
+
+
 app = FastAPI(
     title="Rick and Morty Consumer API",
     description="API simple con FastAPI para consumir la API de Rick & Morty",
@@ -68,3 +75,30 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# ============================================================
+# ENDPOINTS PARA OBTENER INFORMACIÓN DE LOS APRENDICES
+# ============================================================
+
+# Cargar los aprendices desde el archivo JSON al iniciar FastAPI
+@app.on_event("startup")
+def load_trainees():
+    """
+    Carga los aprendices desde el archivo JSON
+    al iniciar la aplicación.
+    """
+    trainee_model.load_data()
+
+
+# ============================================================
+# OBTENER TODOS LOS APRENDICES
+# ============================================================
+
+@app.get("/trainees", tags=["trainees"])
+def get_all_trainees():
+    """
+    Endpoint para obtener todos los aprendices registrados.
+    """
+    return trainee_model.get_all()
+
+   
