@@ -1,4 +1,5 @@
 structure.sh
+/data/trainee.csv
 /data/trainee.json
 /src/models/__pycache__/
 /src/templates/__pycache__/
